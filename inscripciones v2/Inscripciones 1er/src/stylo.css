@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffcea183;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+/* Nav */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #831700;
+  padding: 15px 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  padding: 10px 40px; 
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #4a0e00;
+}
+
+/* FOOTER */
+footer {
+  background-color: #831700;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.Inscripciones {
+  text-align: center;
+}
+
+/* FORMULARIO */
+.icono {
+  display: flex;
+  width: 20%; 
+  left: -20px;
+}
+
+.fotoytitulo {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 50%;
+}
+
+.formulario h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #831700;
+}
+
+.formulario label {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+  width: 100%;
+}
+
+.formulario input {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Progreso */
+.barra-lateral {
+  position: absolute;
+  top: 20%;
+  left: 10px;
+  width: 180px;
+  height: auto;
+  padding: 20px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* ---------------- Diseño celulares ---------------- */
+@media (max-width: 768px) {
+  nav {
+      flex-direction: column;
+  }
+
+  nav a {
+      margin: 5px 0;
+      padding: 8px 20px; 
+  }
+
+  .fotoytitulo {
+      flex-direction: column;
+  }
+
+  .icono {
+      width: 25%;
+  }
+
+  .formulario {
+      width: 90%;
+      max-width: max-content;
+  }
+
+  .barra-lateral {
+      position: static;
+      text-align: center;
+      width: 100%;
+  }
+}
