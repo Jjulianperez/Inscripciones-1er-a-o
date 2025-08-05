@@ -1,61 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
+    <title>Formulario por Pasos</title>
     <link rel="stylesheet" href="/inscripciones v2/Inscripciones 1er/src/stylo.css">
+    <style>
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="1">
-        <form action="" id="formularioalumnos">
-            <label for="nombre">Nombre :</label>
-                        <input type="text" id="nombre" name="nombre" required /><br><br>
-            <label for="apellido">Apellidos :</label><br>
-                        <input type="text" id="apellido" name="apellido" required /><br><br>
-            <label for="Edad">Edad :</label>
-                        <input type="text" id="edad" name="edad" required /><br><br>
-            <label for="dni">DNI :</label>
-                        <input type="text" id="dni" name="dni" required /><br><br>
+    <form id="multiStepForm">
+
+        <!-- Paso 1: Alumno -->
+        <div class="form-step active" id="step-1">
+            <h2>Formulario del Alumno</h2>
+            <label for="alumno-nombre">Nombre :</label>
+            <input type="text" id="alumno-nombre" name="alumno-nombre" required><br><br>
+
+            <label for="alumno-apellido">Apellidos :</label>
+            <input type="text" id="alumno-apellido" name="alumno-apellido" required><br><br>
+
+            <label for="edad">Edad :</label>
+            <input type="text" id="edad" name="edad" required><br><br>
+
+            <label for="alumno-dni">DNI :</label>
+            <input type="text" id="alumno-dni" name="alumno-dni" required><br><br>
+
             <label for="email">Email :</label>
-                        <input type="email" id="email" name="email" required /><br><br>
-            <label for="fechanaci">Fechanacimiento:</label>
-                           <input type="date" id="fechanaci" name="fechanaci" required /><br><br> 
-            <label for="lugarnaci">lugar nacimiento :</label>
-                        <input type="text" id="lugarpro" name="lugarpro" required /><br><br>
-           <label for="escuprovi">Escuela Proveniente :</label>
-                        <input type="text" id="escuprovi" name="escuprovi" required /><br><br>
-                    
-    </div>
+            <input type="email" id="email" name="email" required><br><br>
 
-    <div class="2">
-                                         <h2>  TUTOR</h2>
+            <label for="fechanaci">Fecha de Nacimiento:</label>
+            <input type="date" id="fechanaci" name="fechanaci" required><br><br>
 
-        <form action="" id="formulariotutores">
-            <label for="nombre">Nombre :</label>
-                        <input type="text" id="nombre" name="nombre" required /><br><br>
-            <label for="apellido">Apellidos :</label>
-                        <input type="text" id="apellido" name="apellido" required /><br><br>
-            <label for="telefono">telefono :</label>
-                        <input type="text" id="telefono" name="telefono" required /><br><br>
-            <label for="dni">DNI :</label>
-                        <input type="text" id="dni" name="dni" required /><br><br>
-            <label for="Domicilio">Domicilio :</label>
-                        <input type="text" id="Domicilio" name="Domicilio" required /><br><br>
-          
-                        
-                    
-        </form>
-    </div>
+            <label for="lugarnaci">Lugar de Nacimiento :</label>
+            <input type="text" id="lugarnaci" name="lugarnaci" required><br><br>
 
-    <div class="3">
-                               <p> PREGUNTAS SOBRE EL ALUMNO</p>
-       <label for="adaptacion">¿Posee alguna discapacidad?</label><br><br>
-                        <select name="disca" id="disca">
-                            <option value="true">Si</option>
-                            <option value="false">No</option>
-                        </select><br><br>
-    </div>
+            <label for="escuprovi">Escuela Proveniente :</label>
+            <input type="text" id="escuprovi" name="escuprovi" required><br><br>
+
+            <button type="button" onclick="nextStep()">Siguiente</button>
+        </div>
+
+        <!-- Paso 2: Tutor -->
+        <div class="form-step" id="step-2">
+            <h2>Formulario del Tutor</h2>
+            <label for="tutor-nombre">Nombre :</label>
+            <input type="text" id="tutor-nombre" name="tutor-nombre" required><br><br>
+
+            <label for="tutor-apellido">Apellidos :</label>
+            <input type="text" id="tutor-apellido" name="tutor-apellido" required><br><br>
+
+            <label for="telefono">Teléfono :</label>
+            <input type="text" id="telefono" name="telefono" required><br><br>
+
+            <label for="tutor-dni">DNI :</label>
+            <input type="text" id="tutor-dni" name="tutor-dni" required><br><br>
+
+            <label for="domicilio">Domicilio :</label>
+            <input type="text" id="domicilio" name="domicilio" required><br><br>
+
+            <button type="button" onclick="nextStep()">Siguiente</button>
+        </div>
+
+        <!-- Paso 3: Preguntas -->
+        <div class="form-step" id="step-3">
+            <h2>Preguntas sobre el Alumno</h2>
+            <label for="disca">¿Posee alguna discapacidad?</label><br><br>
+            <select name="disca" id="disca">
+                <option value="true">Sí</option>
+                <option value="false">No</option>
+            </select><br><br>
+
+            <button type="submit">Enviar</button>
+        </div>
+
+    </form>
+
+    <script>
+        let currentStep = 0;
+        const steps = document.querySelectorAll('.form-step');
+
+        function nextStep() {
+            if (currentStep < steps.length - 1) {
+                steps[currentStep].classList.remove('active');
+                currentStep++;
+                steps[currentStep].classList.add('active');
+            }
+        }
+    </script>
+
 </body>
 </html>
