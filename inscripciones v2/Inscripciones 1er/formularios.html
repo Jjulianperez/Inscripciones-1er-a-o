@@ -5,92 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario por Pasos</title>
     <link rel="stylesheet" href="/inscripciones v2/Inscripciones 1er/src/stylo.css">
-    <style>
-        .form-step {
-            display: none;
-        }
-
-        .form-step.active {
-            display: block;
-        }
-
-        button {
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 
     <form id="multiStepForm">
 
-        <!-- Paso 1: Alumno -->
-        <div class="form-step active" id="step-1">
+        <div class="formalum" id="paso1">
+
             <h2>Formulario del Alumno</h2>
-            <label for="alumno-nombre">Nombre :</label>
-            <input type="text" id="alumno-nombre" name="alumno-nombre" required><br><br>
 
-            <label for="alumno-apellido">Apellidos :</label>
-            <input type="text" id="alumno-apellido" name="alumno-apellido" required><br><br>
+            <label>Nombre</label>
+            <input type="text" id="alumno-nombre" name="alumno-nombre" placeholder="" required><br><br>
 
-            <label for="edad">Edad :</label>
-            <input type="text" id="edad" name="edad" required><br><br>
+            <label>Apellidos </label>
+            <input type="text" id="alumno-apellido" name="alumno-apellido" placeholder="" required><br><br>
 
-            <label for="alumno-dni">DNI :</label>
-            <input type="text" id="alumno-dni" name="alumno-dni" required><br><br>
+            <label>Edad </label>
+            <input type="text" id="edad" name="edad" placeholder="" required><br><br>
 
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required><br><br>
+            <label> ingrese su DNI </label>
+            <input type="text" id="alumno-dni" name="alumno-dni" placeholder="" required><br><br>
 
-            <label for="fechanaci">Fecha de Nacimiento:</label>
-            <input type="date" id="fechanaci" name="fechanaci" required><br><br>
+            <label>ingrese su gmmail </label>
+            <input type="email" id="email" name="email" placeholder="" required><br><br>
 
-            <label for="lugarnaci">Lugar de Nacimiento :</label>
-            <input type="text" id="lugarnaci" name="lugarnaci" required><br><br>
+            <label>Fecha de Nacimiento</label>
+            <input type="date" id="fechanaci" name="fechanaci" placeholder="" required><br><br>
+
+            <label>Lugar de Nacimiento</label>
+            <input type="text" id="lugarnaci" name="lugarnaci" placeholder="" required><br><br>
 
             <label for="escuprovi">Escuela Proveniente :</label>
-            <input type="text" id="escuprovi" name="escuprovi" required><br><br>
+            <input type="text" id="escuprovi" name="escuprovi" placeholder="" required><br><br>
 
             <button type="button" onclick="nextStep()">Siguiente</button>
         </div>
 
-        <!-- Paso 2: Tutor -->
-        <div class="form-step" id="step-2">
+        <div class="formtut" id="paso2">
+
             <h2>Formulario del Tutor</h2>
-            <label for="tutor-nombre">Nombre :</label>
-            <input type="text" id="tutor-nombre" name="tutor-nombre" required><br><br>
 
-            <label for="tutor-apellido">Apellidos :</label>
-            <input type="text" id="tutor-apellido" name="tutor-apellido" required><br><br>
+                <label for="tutor-nombre">Nombre :</label>
+                    <input type="text" id="tutor-nombre" name="tutor-nombre" placeholder="" required><br><br>
 
-            <label for="telefono">Teléfono :</label>
-            <input type="text" id="telefono" name="telefono" required><br><br>
+                <label for="tutor-apellido">Apellidos :</label>
+                    <input type="text" id="tutor-apellido" name="tutor-apellido" placeholder="" required><br><br>
 
-            <label for="tutor-dni">DNI :</label>
-            <input type="text" id="tutor-dni" name="tutor-dni" required><br><br>
+                <label for="telefono">Teléfono :</label>
+                    <input type="text" id="telefono" name="telefono"  placeholder="" required><br><br>
 
-            <label for="domicilio">Domicilio :</label>
-            <input type="text" id="domicilio" name="domicilio" required><br><br>
+                <label for="tutor-dni">DNI :</label>
+                    <input type="text" id="tutor-dni" name="tutor-dni" placeholder="" required><br><br>
+
+                <label for="domicilio">Domicilio :</label>
+                    <input type="text" id="domicilio" name="domicilio" placeholder="" required><br><br>
 
             <button type="button" onclick="nextStep()">Siguiente</button>
         </div>
+ 
+        <div class="otspreguntas" id="paso3">
 
-        <!-- Paso 3: Preguntas -->
-        <div class="form-step" id="step-3">
             <h2>Preguntas sobre el Alumno</h2>
-            <label for="disca">¿Posee alguna discapacidad?</label><br><br>
-            <select name="disca" id="disca">
-                <option value="true">Sí</option>
-                <option value="false">No</option>
-            </select><br><br>
+
+                <label for="disca">¿Posee alguna discapacidad?</label><br><br>
+                <select name="disca" id="disca">
+
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+
+                </select><br><br>
 
             <button type="submit">Enviar</button>
+
         </div>
 
     </form>
 
     <script>
         let currentStep = 0;
-        const steps = document.querySelectorAll('.form-step');
+        const pasos = document.querySelectorAll('.form-step');
 
         function nextStep() {
             if (currentStep < steps.length - 1) {
