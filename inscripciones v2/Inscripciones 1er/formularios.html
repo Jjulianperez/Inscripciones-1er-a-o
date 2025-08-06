@@ -81,18 +81,5 @@
 
     </form>
 
-    <script>
-        let currentStep = 0;
-        const pasos = document.querySelectorAll('.form-step');
-
-        function nextStep() {
-            if (currentStep < steps.length - 1) {
-                steps[currentStep].classList.remove('active');
-                currentStep++;
-                steps[currentStep].classList.add('active');
-            }
-        }
-    </script>
-
 </body>
 </html>
