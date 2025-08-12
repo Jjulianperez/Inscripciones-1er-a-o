@@ -7,46 +7,36 @@
     <link rel="stylesheet" href="src/stylo.css">
 </head>
 <body>
-
+<!-- <img src="/inscripciones v2/Inscripciones 1er/media/iconoBerni.png" alt="escudo-ant-berni" class="escudo"> -->
 <form method="post" id="multiStepForm">
-
-    <!-- Paso 1: Alumno -->
+        <!-- Paso 1 -->
     <div class="form" id="paso1">
-        <img src="/inscripciones v2/Inscripciones 1er/media/iconoBerni.png" alt="escudo-ant-berni" class="escudo">
         <h1>Formulario del Alumno</h1>
 
         <label>Nombre</label>
-        <input type="text" id="alumno-nombre" name="alumno-nombre" required><br><br>
+        <input type="text" id="alumno-nombre" name="alumno-nombre" required>
 
         <label>Apellidos</label>
-        <input type="text" id="alumno-apellido" name="alumno-apellido" required><br><br>
+        <input type="text" id="alumno-apellido" name="alumno-apellido" required>
 
         <label>Edad</label>
-        <input type="text" id="edad" name="edad" required><br><br>
+        <input type="text" id="edad" name="edad" required>
 
         <label>Ingrese su DNI</label>
-        <input type="text" id="alumno-dni" name="alumno-dni" required><br><br>
+        <input type="text" id="alumno-dni" name="alumno-dni" required>
 
         <label>Ingrese el Email</label>
-        <input type="email" id="email" name="email" placeholder="Email..." required><br><br>
+        <input type="email" id="email" name="email" placeholder="Email..." required>
 
         <label>Fecha de Nacimiento</label>
-        <input type="date" id="fechanaci" name="fechanaci" required><br><br>
+        <input type="date" id="fechanaci" name="fechanaci" required>
 
         <label>Lugar de Nacimiento</label>
-        <input type="text" id="lugarnaci" name="lugarnaci" required><br><br>
+        <input type="text" id="lugarnaci" name="lugarnaci" required>
 
         <label>Escuela Proveniente</label>
-        <input type="text" id="escuprovi" name="escuprovi" required><br><br>
-
-        <button type="button" id="btn1">Siguiente</button>
+        <input type="text" id="escuprovi" name="escuprovi" required>
     </div>
-
-    <!-- Barra de progreso -->
-    <div class="barra-progreso">
-        <div class="relleno" style="width: 65%;"></div>
-    </div>
-
     <!-- Paso 2: Tutor -->
     <div class="form" id="paso2" style="display: none;">
         <h2>Formulario del Tutor</h2>
@@ -81,16 +71,18 @@
 
         <button type="submit" id="btn3">Enviar</button>
     </div>
+        <!-- Contenedor barra + botones -->
+    <div class="form-footer">
+        <div class="barra-progreso">
+            <div class="relleno" style="width: 0%;"></div>
+        </div>
+        <div class="botones-nav">
+            <button type="button" class="btn-nav" id="btn-prev">← Atrás</button>
+            <button type="button" class="btn-nav" id="btn1">Siguiente →</button>
+        </div>
+    </div>
 
 </form>
-
-<!-- Script barra de progreso -->
-<script>
-    window.onload = function() {
-        const barra = document.querySelector('.relleno');
-        barra.style.width = '80%'; // Cambia esto dinámicamente si quieres
-    };
-</script>
 
 <script src="src/index.js"></script>
 
