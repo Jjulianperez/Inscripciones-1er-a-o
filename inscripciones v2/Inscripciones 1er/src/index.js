@@ -11,7 +11,7 @@ const barra = document.querySelector('.relleno');
 btn1.addEventListener('click', () =>{
     form1.style.display="none"
     form2.style.display = '';
-    barra.style.width = '35%'; // Cambia esto dinámicamente si quieres
+    barra.style.width = '35%';
     
 })
 btn2.addEventListener('click', () =>{
