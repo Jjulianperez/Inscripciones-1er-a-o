@@ -41,21 +41,10 @@
             <label>Escuela Proveniente</label>
             <input type="text" id="escuprovi" name="escuprovi" placeholder="" required><br><br>
 
-            <button type="button" onclick="nextStep()">Siguiente</button><br>
-          
+            <button type="button">Siguiente</button>
         </div>
 
-        <p>Progreso del formulario<p><br>
-        <input type="range" id="barra-progreso">
-
-    <footer>
-        <p>&copy; 2025 Inscripciones. Todos los derechos reservados.</p>
-    </footer>
-
-
-
-
-        <div class="form" id="paso2">
+        <div class="form" id="paso2" style="display: none;">
 
             <h2>Formulario del Tutor</h2>
 
@@ -74,7 +63,7 @@
                 <label for="domicilio">Domicilio :</label>
                     <input type="text" id="domicilio" name="domicilio" placeholder="" required><br><br>
 
-            <button type="button" onclick="nextStep()">Siguiente</button>
+            <button type="button">Siguiente</button>
         </div>
  
         <div class="form" id="paso3">
@@ -94,6 +83,7 @@
         </div>
 
     </form>
+    <script src="src/index.js"></script>
 
 </body>
 </html>
