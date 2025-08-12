@@ -9,13 +9,16 @@
 </head>
 <body>
 
-<h2>Formulario del Alumno</h2>
+
 
     <form method="post" id="multiStepForm">
 
+<img src="/inscripciones v2/Inscripciones 1er/media/iconoBerni.png" alt="escudo-ant-berni" class="escudo">
+
+
         <div class="form" id="paso1">
 
-            
+    <h1>Formulario del Alumno</h1>
 
             <label>Nombre</label>
             <input type="text" id="alumno-nombre" name="alumno-nombre" placeholder="" required><br><br>
@@ -43,6 +46,26 @@
 
             <button type="button">Siguiente</button>
         </div>
+    
+    <div class="barra-progreso">
+
+        <div class="relleno" style="width: 65%;"></div>
+    </div>
+
+
+    <script>
+        window.onload = function() {
+            const barra = document.querySelector('.relleno');
+            barra.style.width = '80%'; // Cambia esto dinámicamente si quieres
+        };
+    </script>
+
+
+        <footer>
+            <p>&copy; 2025 Inscripciones. Todos los derechos reservados.</p>
+        </footer>
+
+
 
         <div class="form" id="paso2" style="display: none;">
 
@@ -66,7 +89,7 @@
             <button type="button">Siguiente</button>
         </div>
  
-        <div class="form" id="paso3">
+        <div class="form" id="paso3" style="display: none;">
 
             <h2>Preguntas sobre el Alumno</h2>
 
