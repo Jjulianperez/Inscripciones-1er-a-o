@@ -19,10 +19,13 @@ h2 {
 .form{
   border-color: black;
   border-style: solid;
-  padding: 5px;
-  margin: 2%;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 5px;
+  width: 500px;
   text-align: center;
   border-radius: 10px;
+  background-color: white;
 }
 
 button {
@@ -47,7 +50,7 @@ footer {
   color: white;
   text-align: center;
   padding: 10px;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
 }
@@ -105,15 +108,19 @@ footer {
   font-size: 16px;
 }
 
-/* Progreso */
-.barra-lateral {
-  position: absolute;
-  top: 20%;
-  left: 10px;
-  width: 180px;
-  height: auto;
-  padding: 20px;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
+.barra-progreso {
+  width: 80%;
+  height: 8px;
+  background-color: #555;
+  border-radius: 4px;
+  margin: 0 auto 10px auto;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  width: 0;
+  border-radius: 4px;
+  transition: width 1s ease-in-out;
 }

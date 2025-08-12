@@ -9,13 +9,13 @@
 </head>
 <body>
 
-<input type="range" id="barra-progreso">
+<h2>Formulario del Alumno</h2>
 
     <form method="post" id="multiStepForm">
 
         <div class="form" id="paso1">
 
-            <h2>Formulario del Alumno</h2>
+            
 
             <label>Nombre</label>
             <input type="text" id="alumno-nombre" name="alumno-nombre" placeholder="" required><br><br>
@@ -41,8 +41,19 @@
             <label>Escuela Proveniente</label>
             <input type="text" id="escuprovi" name="escuprovi" placeholder="" required><br><br>
 
-            <button type="button" onclick="nextStep()">Siguiente</button>
+            <button type="button" onclick="nextStep()">Siguiente</button><br>
+          
         </div>
+
+        <p>Progreso del formulario<p><br>
+        <input type="range" id="barra-progreso">
+
+    <footer>
+        <p>&copy; 2025 Inscripciones. Todos los derechos reservados.</p>
+    </footer>
+
+
+
 
         <div class="form" id="paso2">
 
@@ -66,7 +77,7 @@
             <button type="button" onclick="nextStep()">Siguiente</button>
         </div>
  
-        <div class="otspreguntas" id="paso3">
+        <div class="form" id="paso3">
 
             <h2>Preguntas sobre el Alumno</h2>
 
