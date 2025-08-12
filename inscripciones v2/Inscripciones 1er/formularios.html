@@ -1,57 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
+    <title>Formulario por Pasos</title>
+    <link rel="stylesheet" href="src/stylo.css">
 </head>
 <body>
+<!-- <img src="/inscripciones v2/Inscripciones 1er/media/iconoBerni.png" alt="escudo-ant-berni" class="escudo"> -->
+<form method="post" id="multiStepForm">
+        <!-- Paso 1 -->
+    <div class="form" id="paso1">
+        <h1>Formulario del Alumno</h1>
 
-    <div class="1">
-        <form action="" id="formulariotutores">
+        <label>Nombre</label>
+        <input type="text" id="alumno-nombre" name="alumno-nombre" required>
 
-            <label for=""></label>
-                <input type="text" id="" name="" required>
+        <label>Apellidos</label>
+        <input type="text" id="alumno-apellido" name="alumno-apellido" required>
 
-            <label for=""></label>
-                <input type="text" id="" name="" required>
+        <label>Edad</label>
+        <input type="text" id="edad" name="edad" required>
 
-            <label for=""></label>
-                <input type="text" id="" name="" required>
+        <label>Ingrese su DNI</label>
+        <input type="text" id="alumno-dni" name="alumno-dni" required>
 
-            <label for=""></label>
-                <input type="text" id="" name="" required>
+        <label>Ingrese el Email</label>
+        <input type="email" id="email" name="email" placeholder="Email..." required>
 
-            <label for=""></label>
-                <input type="text" id="" name="" required>
+        <label>Fecha de Nacimiento</label>
+        <input type="date" id="fechanaci" name="fechanaci" required>
 
-        </form>
+        <label>Lugar de Nacimiento</label>
+        <input type="text" id="lugarnaci" name="lugarnaci" required>
+
+        <label>Escuela Proveniente</label>
+        <input type="text" id="escuprovi" name="escuprovi" required>
+    </div>
+    <!-- Paso 2: Tutor -->
+    <div class="form" id="paso2" style="display: none;">
+        <h2>Formulario del Tutor</h2>
+
+        <label for="tutor-nombre">Nombre :</label>
+        <input type="text" id="tutor-nombre" name="tutor-nombre" required><br><br>
+
+        <label for="tutor-apellido">Apellidos :</label>
+        <input type="text" id="tutor-apellido" name="tutor-apellido" required><br><br>
+
+        <label for="telefono">Teléfono :</label>
+        <input type="text" id="telefono" name="telefono" required><br><br>
+
+        <label for="tutor-dni">DNI :</label>
+        <input type="text" id="tutor-dni" name="tutor-dni" required><br><br>
+
+        <label for="domicilio">Domicilio :</label>
+        <input type="text" id="domicilio" name="domicilio" required><br><br>
+
+        <button type="button" id="btn2">Siguiente</button>
     </div>
 
-    <div class="2">
-        <form action="" id="formularioalumnos">
+    <!-- Paso 3 Preguntas -->
+    <div class="form" id="paso3" style="display: none;">
+        <h2>Preguntas sobre el Alumno</h2>
 
-                <label for=""></label>
-                <input type="text" id="" name="" required>
+        <label for="disca">¿Posee alguna discapacidad?</label><br><br>
+        <select name="disca" id="disca">
+            <option value="true">Sí</option>
+            <option value="false">No</option>
+        </select><br><br>
 
-            <label for=""></label>
-                <input type="text" id="" name="" required>
-
-            <label for=""></label>
-                <input type="text" id="" name="" required>
-
-            <label for=""></label>
-                <input type="text" id="" name="" required>
-
-            <label for=""></label>
-                <input type="text" id="" name="" required>
-
-
-        </form>
+        <button type="submit" id="btn3">Enviar</button>
+    </div>
+        <!-- Contenedor barra + botones -->
+    <div class="form-footer">
+        <div class="barra-progreso">
+            <div class="relleno" style="width: 0%;"></div>
+        </div>
+        <div class="botones-nav">
+            <button type="button" class="btn-nav" id="btn-prev">← Atrás</button>
+            <button type="button" class="btn-nav" id="btn1">Siguiente →</button>
+        </div>
     </div>
 
-    <div class="3">
-       
-    </div>
+</form>
+
+<script src="src/index.js"></script>
+
+<footer>
+    <p>&copy; 2025 Inscripciones. Todos los derechos reservados.</p>
+</footer>
+
 </body>
 </html>
