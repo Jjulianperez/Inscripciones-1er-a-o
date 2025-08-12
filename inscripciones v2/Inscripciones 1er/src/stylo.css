@@ -4,38 +4,41 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
+body{
+  font-family: system-ui;
   background-color: #ffcea183;
   color: #333;
 }
 
-h1 {
+h2 {
   text-align: center;
   margin: 20px 0;
   padding: 20px;
 }
 
-/* Nav */
-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #831700;
-  padding: 15px 0;
+.form{
+  border-color: black;
+  border-style: solid;
+  padding: 5px;
+  margin: 2%;
+  text-align: center;
+  border-radius: 10px;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  padding: 10px 40px; 
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
+button {
+  background-color:white;
+  color: black; 
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+
+  transition: 0.3s;
 }
 
-nav a:hover {
-  background-color: #4a0e00;
+button:hover {
+  background-color: blue;
+  color: white; 
+  transform: scale(1.05); 
 }
 
 /* FOOTER */
@@ -113,35 +116,4 @@ footer {
   color: white;
   font-size: 16px;
   font-weight: bold;
-}
-
-/* ---------------- Diseño celulares ---------------- */
-@media (max-width: 768px) {
-  nav {
-      flex-direction: column;
-  }
-
-  nav a {
-      margin: 5px 0;
-      padding: 8px 20px; 
-  }
-
-  .fotoytitulo {
-      flex-direction: column;
-  }
-
-  .icono {
-      width: 25%;
-  }
-
-  .formulario {
-      width: 90%;
-      max-width: max-content;
-  }
-
-  .barra-lateral {
-      position: static;
-      text-align: center;
-      width: 100%;
-  }
 }
