@@ -33,13 +33,13 @@ h1, h2 {
 /* ======= Contenedor del formulario ======= */
 .form {
   max-width: 800px;
-  margin: 30px auto 10px auto; /* más compacto para dejar espacio a la barra */
+  margin: 30px auto 10px auto;
   padding: 30px;
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   text-align: left;
-  border: 2px solid #ccc; /* borde suave como en la maqueta */
+  border: 2px solid #ccc; 
 }
 .form-footer {
   max-width: 800px;
@@ -89,7 +89,7 @@ h1, h2 {
   font-size: 15px;
   border: none;
   padding: 10px 16px;
-  border-radius: 50px; /* forma más redondeada */
+  border-radius: 50px; 
   cursor: pointer;
   transition: background 0.3s ease-in-out;
   width: auto;
