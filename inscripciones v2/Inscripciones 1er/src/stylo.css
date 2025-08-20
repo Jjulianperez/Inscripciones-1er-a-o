@@ -127,6 +127,63 @@ footer {
   font-size: 14px;
 }
 
+/* modal */
+/* Fondo oscuro */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none; /* oculto por defecto */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Caja del modal */
+.modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: aparecer 0.3s ease;
+}
+
+/* Animación suave */
+@keyframes aparecer {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* Mostrar modal cuando esté activo */
+.overlay.active {
+  display: flex;
+}
+
+/* Botones */
+.modal button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #007BFF;
+  color: white;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.modal button.close {
+  background: #ccc;
+  margin-left: 0.5rem;
+}
+
+.modal button:hover {
+  background: #0056b3;
+}
 /* ======= Adaptabilidad móvil ======= */
 @media (max-width: 768px) {
   .form {
