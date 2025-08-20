@@ -1,6 +1,8 @@
-const form1 = document.getElementById('paso1');
-const form2 = document.getElementById('paso2');
-const form3 = document.getElementById('paso3');
+const forms = [
+    document.getElementById('paso1'),
+    document.getElementById('paso2'),
+    document.getElementById('paso3')
+]
 
 const modalActiva = document.getElementById('overlay')
 const cancelarModal = document.getElementById('cancelar')
@@ -17,21 +19,24 @@ const barra = document.querySelector('.relleno');
 // avanzar de formulario
 const NextForm = ()=>{
     if(pasoActual === 0){
-        form2.style.display = '';
-        form1.style.display = 'none';
+        forms[1].style.display = '';
+        forms[0].style.display = 'none';
         barra.style.width = '35%';
         return pasoActual++;
 
-    }else if(pasoActual === 1){
+    }
+    else if(pasoActual === 1){
 
-        form3.style.display = '';
-        form2.style.display = 'none';
+        forms[2].style.display = '';
+        forms[1].style.display = 'none';
         barra.style.width = '75%';
         return pasoActual++;
-    }else{
+    }
+    else{
         barra.style.width = '100%';
+        pasoActual++;
         
-        return pasoActual++;
+        return pasoActual
     }
 }
 // ----------------------------------------------
@@ -39,21 +44,22 @@ const NextForm = ()=>{
 // volver de formulario
 const BackFrom = ()=>{
     if(pasoActual === 1){
-        form1.style.display = '';
-        form2.style.display = 'none';
+        forms[0].style.display = '';
+        forms[1].style.display = 'none';
         barra.style.width = '0%';
         return pasoActual-- ;
     }
     else if (pasoActual === 2 ){
-        form2.style.display = '';
-        form3.style.display = 'none';
+        forms[2].style.display = '';
+        forms[1].style.display = 'none';
         barra.style.width = '35%';
         return pasoActual-- ;
     }
     else if(pasoActual === 3){
-        form3.style.display = ''
+        forms[2].style.display = ''
         barra.style.width = '75%';
-        return pasoActual--
+        pasoActual--
+        return pasoActual; 
     }
 }
 // ---------------------------------------
