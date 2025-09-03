@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="src/stylo.css">
 </head>
 <body>
-<img src="/inscripciones v2/Inscripciones 1er/media/iconoBerni.png" alt="escudo-ant-berni" class="escudo">
+<img src="media/iconoBerni.png" alt="escudo-ant-berni" class="escudo">
 <form method="post" id="multiStepForm">
         <!-- Paso 1 -->
     <div class="form" id="paso1">
@@ -36,6 +36,7 @@
 
         <label>Escuela Proveniente</label>
         <input type="text" id="escuprovi" name="escuprovi" required>
+        <div class="errores"></div>
     </div>
     <!-- Paso 2: Tutor -->
     <div class="form" id="paso2" style="display: none;">
@@ -55,7 +56,7 @@
 
         <label for="domicilio">Domicilio :</label>
         <input type="text" id="domicilio" name="domicilio" required><br><br>
-
+        <div class="errores"></div>
     </div>
 
     <!-- Paso 3 Preguntas -->
@@ -67,6 +68,7 @@
             <option value="true">Sí</option>
             <option value="false">No</option>
         </select><br><br>
+        <div class="errores"></div>
     </div>
         <!-- Contenedor barra + botones -->
     <div class="form-footer">

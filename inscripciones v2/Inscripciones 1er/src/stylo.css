@@ -184,6 +184,11 @@ footer {
 .modal button:hover {
   background: #0056b3;
 }
+.errores {
+  color: red;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
 /* ======= Adaptabilidad móvil ======= */
 @media (max-width: 768px) {
   .form {
