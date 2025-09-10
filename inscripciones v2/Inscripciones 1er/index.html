@@ -27,5 +27,70 @@
         <p>&copy; 2025 Inscripciones. Todos los derechos reservados.</p>
     </footer>
 </body>
-<script src="index.js"></script>
+<script src="index.js">
+
+document.addEventListener("DOMContentLoaded", () => {
+    const btnSiguiente = document.getElementById("btn1");
+    const btnAtras = document.getElementById("btn-prev");
+    const pasos = document.querySelectorAll(".form");
+    const barra = document.querySelector(".relleno");
+
+    let pasoActual = 0;
+
+    function mostrarPaso(index) {
+        pasos.forEach((p, i) => {
+            p.style.display = (i === index) ? "block" : "none";
+        });
+        barra.style.width = ((index + 1) / pasos.length) * 100 + "%";
+    }
+
+    // Función de validación con for
+    function validarCampos(pasoIndex) {
+        const inputs = pasos[pasoIndex].querySelectorAll("input, select");
+        let valido = true;
+
+        for (let i = 0; i < inputs.length; i++) {
+            const campo = inputs[i];
+            if (campo.hasAttribute("required") && campo.value.trim() === "") {
+                campo.style.border = "2px solid red"; // marca error
+                valido = false;
+            } else {
+                campo.style.border = "1px solid #ccc"; // resetea si está bien
+            }
+        }
+
+        return valido;
+    }
+
+    btnSiguiente.addEventListener("click", () => {
+        if (validarCampos(pasoActual)) {
+            if (pasoActual < pasos.length - 1) {
+                pasoActual++;
+                mostrarPaso(pasoActual);
+            } else {
+                // último paso -> mostrar modal
+                document.getElementById("overlay").style.display = "flex";
+            }
+        } else {
+            alert("Por favor complete todos los campos obligatorios.");
+        }
+    });
+
+    btnAtras.addEventListener("click", () => {
+        if (pasoActual > 0) {
+            pasoActual--;
+            mostrarPaso(pasoActual);
+        }
+    });
+
+    // Botón cancelar modal
+    document.getElementById("cancelar").addEventListener("click", () => {
+        document.getElementById("overlay").style.display = "none";
+    });
+
+    mostrarPaso(pasoActual);
+});
+
+</script>
+
 </html>
