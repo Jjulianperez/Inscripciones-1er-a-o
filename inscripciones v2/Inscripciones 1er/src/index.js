@@ -72,10 +72,15 @@ const BackFrom = ()=>{
         const dni = document.getElementById("alumno-dni").value.trim();
         const email = document.getElementById("email").value.trim();
 
+
         if (nombre.length < 2) errores.push("El nombre debe tener al menos 2 caracteres.");
+
         if (apellido.length < 2) errores.push("El apellido debe tener al menos 2 caracteres.");
+
         if (!/^\d+$/.test(edad) || edad < 10 || edad > 20) errores.push("La edad debe ser un número entre 10 y 20.");
+
         if (!/^\d{7,8}$/.test(dni)) errores.push("El DNI debe tener 7 u 8 números.");
+        
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errores.push("El email no es válido.");
     }
 

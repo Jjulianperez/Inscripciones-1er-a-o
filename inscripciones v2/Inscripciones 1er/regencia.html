@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agenda Preceptor - Selección de horarios tipo calendario</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #e0d7c6, #b0c9d9);
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .container {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow:
+      0 4px 15px rgba(0,0,0,0.2),
+      inset 0 0 40px #a2b9d9,
+      inset 0 0 60px #e4d4b7;
+    max-width: 700px;
+    width: 100%;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #003366;
+  }
+  input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 12px 0 20px 0;
+    border-radius: 8px;
+    border: 1.8px solid #7a8ca1;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+  input[type="text"]:focus, input[type="date"]:focus {
+    border-color: #1e90ff;
+    outline: none;
+  }
+  label {
+    font-weight: bold;
+    color: #004080;
+  }
+  .grid-horarios {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px 12px;
+    margin-bottom: 30px;
+  }
+  .dias-semana {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px 12px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #004080;
+    text-align: center;
+    user-select: none;
+    font-size: 1.1rem;
+  }
+  .col-dia {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .col-dia button {
+    background-color: #f0f1f5;
+    border: 2px solid #a2b9d9;
+    border-radius: 8px;
+    padding: 10px 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    user-select: none;
+  }
+  .col-dia button:hover {
+    background-color: #cee29f;
+    border-color: #8fbf6f;
+  }
+  .col-dia button.selected {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    border-color: #0056b3;
+    box-shadow: 0 0 8px rgba(0,123,255,0.7);
+  }
+  button#generar {
+    background-color: #004080;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+  button#generar:hover {
+    background-color: #0059b3;
+  }
+</style>
+</head>
+<body>
+
+<div class="container" id="agenda-container">
+  <h2>Agenda del Preceptor</h2>
+
+  <input type="text" id="nombrePreceptor" placeholder="Nombre y Apellido del Preceptor" />
+
+  <label for="fecha">Seleccionar Fecha:</label>
+  <input type="date" id="fecha" />
+
+  <p style="font-weight:bold; margin: 20px 0 10px;">Seleccioná los horarios disponibles:</p>
+
+  <div class="dias-semana">
+    <div>LUNES</div>
+    <div>MARTES</div>
+    <div>MIÉRCOLES</div>
+    <div>JUEVES</div>
+    <div>VIERNES</div>
+  </div>
+
+  <div class="grid-horarios" id="gridHorarios">
+    <!-- Columnas por día, con botones horarios -->
+  </div>
+
+  <button id="generar" onclick="generarPDF()">Generar PDF</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  const { jsPDF } = window.jspdf;
+
+  // Horarios que se repiten para cada día
+  const horarios = [
+    '8:00 AM - 8:30 AM', '8:30 AM - 9:00 AM', '9:00 AM - 9:30 AM', '9:30 AM - 10:00 AM', '10:00 AM - 10:30 AM',
+    '10:30 AM - 11:00 AM', '11:00 AM - 11:30 AM', '11:30 AM - 12:00 PM', '12:00 PM - 12:30 PM', '12:30 PM - 1:00 PM'
+  ];
+
+  const diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+
+  const gridHorarios = document.getElementById("gridHorarios");
+
+  // Crear una columna para cada día, y dentro botones para cada horario
+  diasSemana.forEach(dia => {
+    const col = document.createElement('div');
+    col.classList.add('col-dia');
+
+    horarios.forEach(hora => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = hora;
+      btn.dataset.valor = dia + ' ' + hora;
+
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('selected');
+      });
+
+      col.appendChild(btn);
+    });
+
+    gridHorarios.appendChild(col);
+  });
+
+  function generarPDF() {
+    const nombre = document.getElementById("nombrePreceptor").value.trim();
+    const fecha = document.getElementById("fecha").value;
+
+    const seleccionados = Array.from(document.querySelectorAll("#gridHorarios button.selected"));
+
+    if (!nombre) {
+      alert("Por favor ingresá tu nombre y apellido.");
+      return;
+    }
+    if (!fecha) {
+      alert("Por favor seleccioná una fecha.");
+      return;
+    }
+    if (seleccionados.length === 0) {
+      alert("Por favor seleccioná al menos un horario.");
+      return;
+    }
+
+    const doc = new jsPDF();
+
+    doc.setFontSize(24);
+    doc.setTextColor("#007bff");
+    doc.text("Agenda del Preceptor", 105, 20, null, null, "center");
+
+    doc.setFontSize(20);
+    doc.setTextColor("#333");
+    doc.text(`Preceptor: ${nombre}`, 20, 45);
+    doc.text(`Fecha: ${fecha}`, 20, 60);
+
+    doc.setFontSize(20);
+    doc.text("Horarios seleccionados:", 20, 80);
+
+    doc.setFontSize(18);
+    let yPos = 90;
+    seleccionados.forEach((btn) => {
+      doc.text(`- ${btn.dataset.valor}`, 30, yPos);
+      yPos += 12;
+    });
+
+    doc.save(`agenda_${nombre.replace(/\s+/g, "_")}_${fecha}.pdf`);
+  }
+</script>
+
+</body>
+</html>

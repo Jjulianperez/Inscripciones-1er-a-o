@@ -187,7 +187,7 @@ footer {
 .errores {
   color: red;
   margin-bottom: 15px;
-  font-size: 14px;
+  font-size: 17px;
 }
 /* ======= Adaptabilidad móvil ======= */
 @media (max-width: 768px) {
