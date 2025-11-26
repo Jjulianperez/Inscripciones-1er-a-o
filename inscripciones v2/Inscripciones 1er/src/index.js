@@ -107,9 +107,11 @@ const BackFrom = ()=>{
 const ModalAlerta = () => {
      if(pasoActual === 3){
         modalActiva.classList.add("active")
+        console.log(modalActiva)
     }
     else{
-        modalActiva.classList.add("")
+        modalActiva.classList.remove("active")
+        console.log(modalActiva)
     }
 }
 
